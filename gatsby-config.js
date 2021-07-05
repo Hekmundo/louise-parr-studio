@@ -4,6 +4,7 @@ module.exports = {
     title: 'Louise Parr Studio',
   },
   plugins: [
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
