@@ -1,4 +1,7 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'gatsby';
+import InstaIcon from '../../images/svg/ig-icon.svg';
+import PinterestIcon from '../../images/svg/pinterest-icon.svg';
 
 export const StyledHeader = styled.header`
   background-color: ${(props) => props.theme.primary};
@@ -24,7 +27,6 @@ export const ContentContainer = styled.div`
   .logo {
     max-height: 187px;
     max-width: 267.23px;
-    display: inline-block;
   }
 `;
 
@@ -41,9 +43,13 @@ export const NavList = styled.ul`
   flex-wrap: wrap;
 `;
 
+export const StyledLink = styled(Link)`
+  color: ${(props) => props.theme.textPrimary};
+`;
+
 export const NavItem = styled.li`
   white-space: nowrap;
-  color: #fff;
+  color: ${(props) => props.theme.textPrimary};
   padding: 0.1em 0;
   line-height: 1.3em;
   margin-left: 5vw;
@@ -52,9 +58,38 @@ export const NavItem = styled.li`
     margin-left: 0;
   }
 
-  font-size: calc((1.7 - 1) * 1.2vw + 1rem);
+  font-size: calc(0.7 * 1.2vw + 1rem);
 
   @media screen and (min-width: 1432.12px) {
     font-size: calc(1.7 * 1rem);
   }
+`;
+
+export const SocialsContainer = styled.div`
+  display: inline-flex;
+  justify-content: flex-end;
+  align-content: center;
+`;
+
+export const SocialLink = styled.a`
+  margin-left: 5.5vw;
+  width: 30px;
+  height: 30px;
+`;
+
+const IconStyles = css`
+  max-width: 100%;
+  max-height: 100%;
+
+  path {
+    fill: ${(props) => props.theme.textPrimary};
+  }
+`;
+
+export const StyledInstaIcon = styled(InstaIcon)`
+  ${IconStyles}
+`;
+
+export const StyledPinterestIcon = styled(PinterestIcon)`
+  ${IconStyles}
 `;
