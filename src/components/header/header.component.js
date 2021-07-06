@@ -7,6 +7,7 @@ import {
   Nav,
   NavList,
   NavItem,
+  StyledLink,
   SocialsContainer,
   SocialLink,
   StyledInstaIcon,
@@ -30,10 +31,10 @@ const Header = () => {
         <Nav>
           <NavList>
             <NavItem>
-              <Link to='/about'>ABOUT</Link>
+              <StyledLink to='/about'>ABOUT</StyledLink>
             </NavItem>
             <NavItem>
-              <Link to='/contact'>CONTACT</Link>
+              <StyledLink to='/contact'>CONTACT</StyledLink>
             </NavItem>
             <NavItem>
               <ShopLink>SHOP</ShopLink>

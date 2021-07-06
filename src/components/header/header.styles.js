@@ -44,7 +44,18 @@ export const NavList = styled.ul`
 `;
 
 export const StyledLink = styled(Link)`
-  color: ${(props) => props.theme.textPrimary};
+  ${(props) => {
+    const route =
+      typeof window !== 'undefined'
+        ? window.location.href.match(/\/\w+$/)
+        : null;
+
+    return route && route[0].slice(1) === props.children.toLowerCase()
+      ? css`
+          border-bottom: 1px solid ${props.theme.textPrimary};
+        `
+      : '';
+  }}
 `;
 
 export const NavItem = styled.li`
