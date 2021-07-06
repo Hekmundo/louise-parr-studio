@@ -7,11 +7,12 @@ import {
   Nav,
   NavList,
   NavItem,
-  StyledLink,
   SocialsContainer,
   SocialLink,
   StyledInstaIcon,
   StyledPinterestIcon,
+  ShopDropdown,
+  ShopLink,
 } from './header.styles';
 
 const Header = () => {
@@ -29,12 +30,31 @@ const Header = () => {
         <Nav>
           <NavList>
             <NavItem>
-              <StyledLink to='/about'>ABOUT</StyledLink>
+              <Link to='/about'>ABOUT</Link>
             </NavItem>
             <NavItem>
-              <StyledLink to='/contact'>CONTACT</StyledLink>
+              <Link to='/contact'>CONTACT</Link>
             </NavItem>
-            <NavItem>SHOP</NavItem>
+            <NavItem>
+              <ShopLink>SHOP</ShopLink>
+              <ShopDropdown>
+                <li>
+                  <a href='https://www.etsy.com/uk/shop/louiseparrstudio'>
+                    ART PRINTS
+                  </a>
+                </li>
+                <li>
+                  <a href='https://www.spoonflower.com/profiles/louiseparrstudio'>
+                    FABRICS
+                  </a>
+                </li>
+                <li>
+                  <a href='https://www.thortful.com/creator/louiseparrstudio'>
+                    CARDS
+                  </a>
+                </li>
+              </ShopDropdown>
+            </NavItem>
           </NavList>
         </Nav>
 

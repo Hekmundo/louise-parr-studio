@@ -58,6 +58,10 @@ export const NavItem = styled.li`
     margin-left: 0;
   }
 
+  &:last-child {
+    position: relative;
+  }
+
   font-size: calc(0.7 * 1.2vw + 1rem);
 
   @media screen and (min-width: 1432.12px) {
@@ -92,4 +96,26 @@ export const StyledInstaIcon = styled(InstaIcon)`
 
 export const StyledPinterestIcon = styled(PinterestIcon)`
   ${IconStyles}
+`;
+
+export const ShopLink = styled.span`
+  cursor: pointer;
+`;
+
+export const ShopDropdown = styled.ul`
+  display: none;
+  position: absolute;
+  background-color: ${(props) => props.theme.primary};
+  top: auto;
+  left: auto;
+  right: -1em;
+  text-align: right;
+  padding: 0.5em 1em;
+  min-width: 200px;
+  z-index: 10;
+  line-height: 1.6em;
+
+  ${NavItem}:last-child:hover & {
+    display: block;
+  }
 `;
