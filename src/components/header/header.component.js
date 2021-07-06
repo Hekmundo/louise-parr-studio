@@ -7,13 +7,14 @@ import {
   Nav,
   NavList,
   NavItem,
-  StyledLink,
+  PageLink,
   SocialsContainer,
   SocialLink,
   StyledInstaIcon,
   StyledPinterestIcon,
   ShopDropdown,
   ShopLink,
+  BurgerButton,
 } from './header.styles';
 
 const Header = () => {
@@ -31,16 +32,19 @@ const Header = () => {
         <Nav>
           <NavList>
             <NavItem>
-              <StyledLink to='/about'>ABOUT</StyledLink>
+              <PageLink to='/about'>ABOUT</PageLink>
             </NavItem>
             <NavItem>
-              <StyledLink to='/contact'>CONTACT</StyledLink>
+              <PageLink to='/contact'>CONTACT</PageLink>
             </NavItem>
-            <NavItem>
+            <NavItem tabIndex='0' aria-label='Shop'>
               <ShopLink>SHOP</ShopLink>
               <ShopDropdown>
                 <li>
-                  <a href='https://www.etsy.com/uk/shop/louiseparrstudio'>
+                  <a
+                    className='anchor'
+                    href='https://www.etsy.com/uk/shop/louiseparrstudio'
+                  >
                     ART PRINTS
                   </a>
                 </li>
@@ -75,6 +79,8 @@ const Header = () => {
             <StyledPinterestIcon />
           </SocialLink>
         </SocialsContainer>
+
+        <BurgerButton></BurgerButton>
       </ContentContainer>
     </StyledHeader>
   );

@@ -13,6 +13,10 @@ export const StyledHeader = styled.header`
   padding-right: 2vw;
   ${'' /* pointer-events: auto; */}
   line-height: 1.3em;
+
+  @media screen and (max-width: 800px) {
+    padding: 6vw;
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -35,6 +39,10 @@ export const Nav = styled.nav`
   margin-left: auto;
   padding-left: 5.5vw;
   flex-grow: 1;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const NavList = styled.ul`
@@ -43,7 +51,7 @@ export const NavList = styled.ul`
   flex-wrap: wrap;
 `;
 
-export const StyledLink = styled(Link)`
+export const PageLink = styled(Link)`
   ${(props) => {
     const route =
       typeof window !== 'undefined'
@@ -84,6 +92,10 @@ export const SocialsContainer = styled.div`
   display: inline-flex;
   justify-content: flex-end;
   align-content: center;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const SocialLink = styled.a`
@@ -114,19 +126,28 @@ export const ShopLink = styled.span`
 `;
 
 export const ShopDropdown = styled.ul`
-  display: none;
+  left: -999em;
   position: absolute;
   background-color: ${(props) => props.theme.primary};
-  top: auto;
-  left: auto;
-  right: -1em;
   text-align: right;
   padding: 0.5em 1em;
   min-width: 200px;
   z-index: 10;
   line-height: 1.6em;
 
-  ${NavItem}:last-child:hover & {
-    display: block;
+  ${NavItem}:last-child:hover &, 
+  ${NavItem}:last-child:focus &,
+  &:focus-within {
+    top: auto;
+    left: auto;
+    right: -1em;
+  }
+`;
+
+export const BurgerButton = styled.button`
+  display: none;
+
+  @media screen and (max-width: 800px) {
+    display: inline-block;
   }
 `;
