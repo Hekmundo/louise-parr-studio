@@ -162,10 +162,12 @@ export const BurgerButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  height: 30px;
   padding: 0;
 
   @media screen and (max-width: 800px) {
     display: flex;
+    justify-content: center;
     align-content: items;
     flex-direction: column;
   }
@@ -173,16 +175,37 @@ export const BurgerButton = styled.button`
 
 const bunStyles = css`
   background-color: ${(props) => props.theme.textPrimary};
-  height: 2px;
-  width: 36px;
-  margin: 5px;
-  opacity: 0.9;
+  height: 1px;
+  width: 35px;
+  transition: transform 250ms cubic-bezier(0.2, 0.6, 0.3, 1),
+    width 250ms cubic-bezier(0.2, 0.6, 0.3, 1);
+  will-change: transform, width;
 `;
 
 export const TopBun = styled.div`
   ${bunStyles}
+  ${(props) =>
+    props.burgerActive
+      ? css`
+          transform: translate(3.5px) rotate(-135deg);
+          width: 30px;
+          background-color: ${props.theme.textSecondary};
+        `
+      : css`
+          transform: translatey(-5.5px);
+        `};
 `;
 
 export const BottomBun = styled.div`
   ${bunStyles}
+  ${(props) =>
+    props.burgerActive
+      ? css`
+          transform: translate(3.5px, -1px) rotate(135deg);
+          width: 30px;
+          background-color: ${props.theme.textSecondary};
+        `
+      : css`
+          transform: translatey(5.5px);
+        `};
 `;

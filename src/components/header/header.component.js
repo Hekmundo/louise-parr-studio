@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import {
@@ -20,6 +20,8 @@ import {
 } from './header.styles';
 
 const Header = () => {
+  const [burgerActive, setBurgerActive] = useState(false);
+
   return (
     <StyledHeader>
       <ContentContainer>
@@ -79,9 +81,12 @@ const Header = () => {
           </SocialLink>
         </SocialsContainer>
 
-        <BurgerButton aria-label='Navigation'>
-          <TopBun />
-          <BottomBun />
+        <BurgerButton
+          onClick={() => setBurgerActive(!burgerActive)}
+          aria-label='Navigation'
+        >
+          <TopBun burgerActive={burgerActive} />
+          <BottomBun burgerActive={burgerActive} />
         </BurgerButton>
       </ContentContainer>
     </StyledHeader>
