@@ -15,6 +15,8 @@ import {
   ShopDropdown,
   ShopLink,
   BurgerButton,
+  TopBun,
+  BottomBun,
 } from './header.styles';
 
 const Header = () => {
@@ -41,10 +43,7 @@ const Header = () => {
               <ShopLink>SHOP</ShopLink>
               <ShopDropdown>
                 <li>
-                  <a
-                    className='anchor'
-                    href='https://www.etsy.com/uk/shop/louiseparrstudio'
-                  >
+                  <a href='https://www.etsy.com/uk/shop/louiseparrstudio'>
                     ART PRINTS
                   </a>
                 </li>
@@ -80,7 +79,10 @@ const Header = () => {
           </SocialLink>
         </SocialsContainer>
 
-        <BurgerButton></BurgerButton>
+        <BurgerButton aria-label='Navigation'>
+          <TopBun />
+          <BottomBun />
+        </BurgerButton>
       </ContentContainer>
     </StyledHeader>
   );

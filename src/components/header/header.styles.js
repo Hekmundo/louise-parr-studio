@@ -9,13 +9,16 @@ export const StyledHeader = styled.header`
   box-sizing: border-box;
   padding-top: 2.5vw;
   padding-bottom: 2.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  ${'' /* pointer-events: auto; */}
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
   line-height: 1.3em;
 
   @media screen and (max-width: 800px) {
     padding: 6vw;
+  }
+
+  @media screen and (max-width: 750px) {
+    padding: 6vw 7vw;
   }
 `;
 
@@ -31,6 +34,16 @@ export const ContentContainer = styled.div`
   .logo {
     max-height: 187px;
     max-width: 267.23px;
+
+    @media screen and (max-width: 750px) {
+      max-height: 50px;
+      max-width: 60px;
+      opacity: 0.9;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    justify-content: space-between;
   }
 `;
 
@@ -146,8 +159,30 @@ export const ShopDropdown = styled.ul`
 
 export const BurgerButton = styled.button`
   display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 
   @media screen and (max-width: 800px) {
-    display: inline-block;
+    display: flex;
+    align-content: items;
+    flex-direction: column;
   }
+`;
+
+const bunStyles = css`
+  background-color: ${(props) => props.theme.textPrimary};
+  height: 2px;
+  width: 36px;
+  margin: 5px;
+  opacity: 0.9;
+`;
+
+export const TopBun = styled.div`
+  ${bunStyles}
+`;
+
+export const BottomBun = styled.div`
+  ${bunStyles}
 `;
