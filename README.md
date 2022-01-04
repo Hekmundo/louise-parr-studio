@@ -1,54 +1,42 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# Prismic & Gatsby getting started tutorial project
 
-## 🚀 Quick start
+This project is meant to help you learn how to get started using [Prismic](https://prismic.io) (API based CMS) along with [Gatsby.js](https://www.gatsbyjs.org/). Check out the Prismic developer documentation to find the tutorial for this project.
 
-1.  **Create a Gatsby site.**
+## Getting Started
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+These instructions will get you a copy of the project up and running on your local machine for development purposes.
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+### Prerequisites
 
-2.  **Start developing.**
+To make sure this project will work, you'll need to have [Node.js](https://nodejs.org/en/) installed on your machine. Follow the instructions [here](https://nodejs.org/en/) if you don't already have it installed.
 
-    Navigate into your new site’s directory and start it up.
+### Installing
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+To get this project running, first download the project files. Then from the root of the project files, launch the terminal (command prompt or similar on Windows) and run the following command.
 
-3.  **Open the code and start customizing!**
+```
+npm install
+```
 
-    Your site is now running at http://localhost:8000!
+This will install the project dependencies. After this is done, run the following command.
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+```
+npm start
+```
 
-4.  **Learn more**
+This will run the build of your website and launch a local server to see the site working locally. You can view your site from [http://localhost:8000](http://localhost:8000).
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Built With
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- [Prismic](https://prismic.io/) - API-based content management system
+- [Gatsby](https://www.gatsbyjs.org/) - React based framework for building websites
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## License
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+This software is licensed under the Apache 2 license, quoted below.
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+Copyright 2021 Prismic (https://prismic.io).
 
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this project except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
 
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
