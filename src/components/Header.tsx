@@ -52,8 +52,9 @@ export const Header: FC<HeaderProps> = ({ isHomepage = false }) => {
         <ul>
           {page_navigation?.map((item, index) => (
             <li key={`link-${index}`}>
-              {/* @ts-ignore */}
-              <PrismicLink field={item?.page}>{item?.page_name}</PrismicLink>
+              <PrismicLink field={item?.page as any}>
+                {item?.page_name}
+              </PrismicLink>
             </li>
           ))}
 
