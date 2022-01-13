@@ -27,6 +27,14 @@ module.exports = {
       },
     },
     'gatsby-plugin-image',
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /images/, // See below to configure properly
+        },
+      },
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-manifest',

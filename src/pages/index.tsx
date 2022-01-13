@@ -1,20 +1,48 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { withPrismicPreview } from 'gatsby-plugin-prismic-previews';
-import { HomePage } from '../models';
+import { PrismicRichText } from '@prismicio/react';
+import { HomePage } from '../graphql-models';
 import { Layout } from '../components/Layout';
 import SEO from '../components/SEO';
 
-const HomeTemplate: FC<PageProps<HomePage>> = ({ data }) => {
+const HomeTemplate = ({ data }: PageProps<HomePage>) => {
   if (!data) return null;
-
-  const doc = data.prismicHomePage.data;
-  console.log(doc);
+  const {
+    banner,
+    footer_button_link,
+    footer_button_text,
+    footer_content,
+    image_collage,
+  } = data.prismicHomePage.data;
+  console.log(image_collage[0]);
 
   return (
     <Layout isHomepage>
       <SEO title="Home" />
-      <main className="container"></main>
+      <main className="container">
+        <div>
+          <h2>{banner.text}</h2>
+        </div>
+        <ul>
+          {image_collage.map((item, index) => (
+            <li key={`image-${index}`}>
+              <img
+                src={item.image.url}
+                alt={item.image.alt || ''}
+                width="100px"
+              />
+            </li>
+          ))}
+        </ul>
+        <div>
+          {/* @ts-ignore */}
+          <PrismicRichText field={footer_content.richText} />
+          <a href={footer_button_link.url} target={footer_button_link.target}>
+            {footer_button_text}
+          </a>
+        </div>
+      </main>
     </Layout>
   );
 };

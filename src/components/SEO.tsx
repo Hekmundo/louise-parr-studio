@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-import { SiteData } from '../models';
+import { SiteData } from '../graphql-models';
 
 interface SEOProps {
   description?: string;
