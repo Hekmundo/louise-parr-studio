@@ -1,15 +1,9 @@
-// Header.js file
-
-import React from 'react';
+import React, { FC } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { PrismicLink } from '@prismicio/react';
-import { HeaderData } from '../graphql-models';
+import { HeaderData, HeaderProps } from '../types';
 
-interface HeaderProps {
-  isHomepage?: boolean;
-}
-
-export const Header = ({ isHomepage = false }: HeaderProps) => {
+export const Header: FC<HeaderProps> = ({ isHomepage = false }) => {
   const { prismicHeader }: HeaderData = useStaticQuery(graphql`
     {
       prismicHeader {
@@ -48,27 +42,31 @@ export const Header = ({ isHomepage = false }: HeaderProps) => {
       <a href="/">
         <img
           className="logo"
-          src={logo.url}
-          alt={logo.alt || ''}
+          src={logo?.url}
+          alt={logo?.alt || ''}
           width="200px"
         />
       </a>
 
       <nav>
         <ul>
-          {page_navigation.map((item, index) => (
+          {page_navigation?.map((item, index) => (
             <li key={`link-${index}`}>
-              <PrismicLink field={item.page}>{item.page_name}</PrismicLink>
+              {/* @ts-ignore */}
+              <PrismicLink field={item?.page}>{item?.page_name}</PrismicLink>
             </li>
           ))}
 
           <li>
             <a>{store_label}</a>
             <ul>
-              {store_links.map((item, index) => (
+              {store_links?.map((item, index) => (
                 <li key={`store-link-${index}`}>
-                  <a href={item.store_link.url} target={item.store_link.target}>
-                    {item.store_name}
+                  <a
+                    href={item?.store_link?.url}
+                    target={item?.store_link?.target}
+                  >
+                    {item?.store_name}
                   </a>
                 </li>
               ))}

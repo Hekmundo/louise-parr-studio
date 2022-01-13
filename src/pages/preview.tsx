@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { withPrismicPreviewResolver } from 'gatsby-plugin-prismic-previews';
 
-const PreviewPage = () => {
+const PreviewPage: FC = () => {
   return (
     <div>
       <h1>Loading preview…</h1>

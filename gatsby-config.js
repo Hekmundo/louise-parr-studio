@@ -1,5 +1,3 @@
-// gatsby-config.js file
-
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -56,5 +54,11 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-plugin-typegen',
+      options: {
+        outputPath: `src/__generated__/gatsby-types.d.ts`,
+      },
+    },
   ],
 };

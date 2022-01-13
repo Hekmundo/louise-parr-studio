@@ -1,14 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-import { SiteData } from '../graphql-models';
+import { SEOProps, SiteData } from '../types';
 
-interface SEOProps {
-  description?: string;
-  title: string;
-}
-
-const SEO = ({ description = '', title }: SEOProps) => {
+const SEO: FC<SEOProps> = ({ description = '', title }) => {
   const { site }: SiteData = useStaticQuery(graphql`
     {
       site {

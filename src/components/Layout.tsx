@@ -1,13 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { FC } from 'react';
+import { LayoutProps } from '../types';
 import { Header } from './Header';
 import { Footer } from './Footer';
 
-interface LayoutProps {
-  isHomepage?: boolean;
-  children: ReactNode;
-}
-
-export const Layout = ({ isHomepage = false, children }: LayoutProps) => (
+export const Layout: FC<LayoutProps> = ({ isHomepage = false, children }) => (
   <>
     <Header isHomepage={isHomepage} />
     {children}

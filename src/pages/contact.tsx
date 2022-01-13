@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { withPrismicPreview } from 'gatsby-plugin-prismic-previews';
-import { ContactPage } from '../graphql-models';
+import { ContactPageData } from '../types';
 import { Layout } from '../components/Layout';
 import SEO from '../components/SEO';
 
-const ContactTemplate = ({ data }: PageProps<ContactPage>) => {
+const ContactTemplate: FC<PageProps<ContactPageData>> = ({ data }) => {
   if (!data) return null;
   const doc = data.prismicContactPage.data;
 
