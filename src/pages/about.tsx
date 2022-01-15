@@ -21,9 +21,10 @@ const AboutTemplate: FC<PageProps<AboutPageData>> = ({ data }) => {
         <PrismicRichText field={about_content?.richText} />
         <img src={about_image?.url} alt={about_image?.alt || ''} />
         <PrismicRichText field={instagram_header?.richText} />
+
         <div>
           {InstagramPosts.map(({ link, img }) => (
-            <a href={link}>
+            <a href={link} target="_blank">
               <img src={img} alt="" />
             </a>
           ))}
