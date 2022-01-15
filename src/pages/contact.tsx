@@ -1,6 +1,7 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, FormEvent } from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { withPrismicPreview } from 'gatsby-plugin-prismic-previews';
+import emailjs from '@emailjs/browser';
 import { PrismicRichText } from '@prismicio/react';
 import { ContactPageData } from '../types';
 import { Layout } from '../components/Layout';
@@ -13,6 +14,25 @@ const ContactTemplate: FC<PageProps<ContactPageData>> = ({ data }) => {
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    try {
+      const response = await emailjs.sendForm(
+        'contact_service',
+        'contact_form',
+        '#contact-form',
+        process.env.EMAILJS_USER_ID,
+      );
+      if (response.status === 200 && response.text === 'OK') {
+        setFormSubmitted(true);
+      }
+    } catch (error) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(error);
+      }
+    }
+  }
+
   return (
     <Layout>
       <SEO title="Contact" />
@@ -22,7 +42,7 @@ const ContactTemplate: FC<PageProps<ContactPageData>> = ({ data }) => {
         </div>
         <div>
           {!formSubmitted ? (
-            <form>
+            <form id="contact-form" onSubmit={handleSubmit}>
               <fieldset>
                 <legend>Name</legend>
                 <div>
@@ -56,8 +76,8 @@ const ContactTemplate: FC<PageProps<ContactPageData>> = ({ data }) => {
                 />
               </div>
               <div>
-                <label htmlFor="dropdown">{dropdown_header}</label>
-                <select name="dropdown" id="dropdown">
+                <label htmlFor="interest">{dropdown_header}</label>
+                <select name="interest" id="interest">
                   {dropdown_options?.map((item, index) => (
                     <option
                       key={`dropdown-option-${index}`}
@@ -69,8 +89,8 @@ const ContactTemplate: FC<PageProps<ContactPageData>> = ({ data }) => {
                 </select>
               </div>
               <div>
-                <label htmlFor="text-area">Message</label>
-                <textarea id="text-area" name="text-area" required />
+                <label htmlFor="message">Message</label>
+                <textarea id="message" name="message" required />
               </div>
               <div>
                 <input type="submit" value="Submit" />
