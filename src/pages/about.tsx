@@ -5,6 +5,7 @@ import { PrismicRichText } from '@prismicio/react';
 import { AboutPageData } from '../types';
 import { Layout } from '../components/Layout';
 import SEO from '../components/SEO';
+import InstagramPosts from '../InstagramMockPosts';
 
 const AboutTemplate: FC<PageProps<AboutPageData>> = ({ data }) => {
   if (!data) return null;
@@ -16,10 +17,17 @@ const AboutTemplate: FC<PageProps<AboutPageData>> = ({ data }) => {
     <Layout>
       <SEO title="About" />
       <main className="container" style={{ color: 'white' }}>
+        <PrismicRichText field={main_paragraph?.richText} />
         <PrismicRichText field={about_content?.richText} />
         <img src={about_image?.url} alt={about_image?.alt || ''} />
         <PrismicRichText field={instagram_header?.richText} />
-        <PrismicRichText field={main_paragraph?.richText} />
+        <div>
+          {InstagramPosts.map(({ link, img }) => (
+            <a href={link}>
+              <img src={img} alt="" />
+            </a>
+          ))}
+        </div>
       </main>
     </Layout>
   );
