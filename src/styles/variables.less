@@ -8,3 +8,7 @@
 @grey: #444444;
 @black: #333333;
 @white: #ffffff;
+
+.transition(@property, @duration) {
+  transition: @property cubic-bezier(0.19, 1, 0.22, 1) @duration;
+}

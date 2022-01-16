@@ -38,6 +38,7 @@ const HomeTemplate: FC<PageProps<HomePageData>> = ({ data }) => {
           <div className="container center-flex">
             <PrismicRichText field={footer_content?.richText} />
             <a
+              className="cta-btn"
               href={footer_button_link?.url}
               target={footer_button_link?.target}
             >
