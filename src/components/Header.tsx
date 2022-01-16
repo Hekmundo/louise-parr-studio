@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import { PrismicLink } from '@prismicio/react';
-import { HeaderData, HeaderProps } from '../types';
+import { HeaderData } from '../types';
 
-export const Header: FC<HeaderProps> = ({ isHomepage = false }) => {
+export const Header: FC = () => {
   const { prismicHeader }: HeaderData = useStaticQuery(graphql`
     {
       prismicHeader {
@@ -35,46 +35,42 @@ export const Header: FC<HeaderProps> = ({ isHomepage = false }) => {
   const { logo, page_navigation, store_label, store_links } =
     prismicHeader.data;
 
-  const homepageClass = isHomepage ? 'homepage-header' : '';
-
   return (
-    <header className={`site-header ${homepageClass}`}>
-      <a href="/">
-        <img
-          className="logo"
-          src={logo?.url}
-          alt={logo?.alt || ''}
-          width="200px"
-        />
-      </a>
+    <header>
+      <div className="container">
+        <Link to="/" className="logo-anchor">
+          <img src={logo?.url} alt={logo?.alt || ''} />
+        </Link>
 
-      <nav>
-        <ul>
-          {page_navigation?.map((item, index) => (
-            <li key={`link-${index}`}>
-              <PrismicLink field={item?.page as any}>
-                {item?.page_name}
-              </PrismicLink>
+        <nav>
+          <ul>
+            {page_navigation?.map((item, index) => (
+              <li key={`link-${index}`}>
+                {/* @ts-ignore */}
+                <PrismicLink field={item?.page} activeClassName="highlight">
+                  {item?.page_name}
+                </PrismicLink>
+              </li>
+            ))}
+
+            <li>
+              <a>{store_label}</a>
+              <ul className="hidden">
+                {store_links?.map((item, index) => (
+                  <li key={`store-link-${index}`}>
+                    <a
+                      href={item?.store_link?.url}
+                      target={item?.store_link?.target}
+                    >
+                      {item?.store_name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </li>
-          ))}
-
-          <li>
-            <a>{store_label}</a>
-            <ul>
-              {store_links?.map((item, index) => (
-                <li key={`store-link-${index}`}>
-                  <a
-                    href={item?.store_link?.url}
-                    target={item?.store_link?.target}
-                  >
-                    {item?.store_name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </li>
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 };

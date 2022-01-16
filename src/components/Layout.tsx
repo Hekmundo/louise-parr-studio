@@ -3,9 +3,9 @@ import { LayoutProps } from '../types';
 import { Header } from './Header';
 import { Footer } from './Footer';
 
-export const Layout: FC<LayoutProps> = ({ isHomepage = false, children }) => (
+export const Layout: FC<LayoutProps> = ({ children }) => (
   <>
-    <Header isHomepage={isHomepage} />
+    <Header />
     {children}
     <Footer />
   </>

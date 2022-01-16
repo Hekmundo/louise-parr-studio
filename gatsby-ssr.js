@@ -7,8 +7,8 @@ import {
 } from 'gatsby-plugin-prismic-previews';
 
 import './src/styles/reset.css';
-import './src/styles/common.css';
-import './src/styles/style.css';
+import './src/styles/common.less';
+import './src/styles/style.less';
 
 import { linkResolver } from './src/LinkResolver';
 import HomeTemplate from './src/pages/index';

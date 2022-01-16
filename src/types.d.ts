@@ -6,12 +6,7 @@ export interface SEOProps {
   title: string;
 }
 
-interface HeaderProps {
-  isHomepage?: boolean;
-}
-
 export interface LayoutProps {
-  isHomepage?: boolean;
   children: ReactNode;
 }
 

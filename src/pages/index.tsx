@@ -17,30 +17,34 @@ const HomeTemplate: FC<PageProps<HomePageData>> = ({ data }) => {
   } = data.prismicHomePage.data;
 
   return (
-    <Layout isHomepage>
+    <Layout>
       <SEO title="Home" />
-      <main className="container">
-        <div>
-          <h2>{banner?.text}</h2>
-        </div>
-        <ul>
-          {image_collage?.map((item, index) => (
-            <li key={`image-${index}`}>
-              <img
-                src={item?.image?.url}
-                alt={item?.image?.alt || ''}
-                width="100px"
-              />
-            </li>
-          ))}
-        </ul>
-        <div>
-          {/* @ts-ignore */}
-          <PrismicRichText field={footer_content.richText} />
-          <a href={footer_button_link?.url} target={footer_button_link?.target}>
-            {footer_button_text}
-          </a>
-        </div>
+      <main className="homepage">
+        <section className="homepage-banner">
+          <h2 className="container center-flex">{banner?.text}</h2>
+        </section>
+
+        <section className="gallery">
+          <ul className="container">
+            {image_collage?.map((item, index) => (
+              <li key={`image-${index}`}>
+                <img src={item?.image?.url} alt={item?.image?.alt || ''} />
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="homepage-footer">
+          <div className="container center-flex">
+            <PrismicRichText field={footer_content?.richText} />
+            <a
+              href={footer_button_link?.url}
+              target={footer_button_link?.target}
+            >
+              {footer_button_text}
+            </a>
+          </div>
+        </section>
       </main>
     </Layout>
   );

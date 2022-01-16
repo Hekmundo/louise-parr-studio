@@ -50,15 +50,17 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: [`Lato\:400,400,700,700i,900`, `Amiri\:400,400,700,700i`],
+        fonts: [`Montserrat\:400,400i,700`],
       },
     },
-    `gatsby-plugin-offline`,
+
     {
       resolve: 'gatsby-plugin-typegen',
       options: {
         outputPath: `src/__generated__/gatsby-types.d.ts`,
       },
     },
+    `gatsby-plugin-less`,
+    `gatsby-plugin-offline`,
   ],
 };
