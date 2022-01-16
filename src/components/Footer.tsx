@@ -6,7 +6,7 @@ import PinterestLogo from '../images/pinterest.svg';
 export const Footer = () => (
   <footer>
     <div className="container center-flex">
-      <div>
+      <div className="social-links">
         <a href="https://www.instagram.com/louise_parr_studio/" target="_blank">
           <InstagramLogo />
         </a>

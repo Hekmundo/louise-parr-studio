@@ -7,15 +7,22 @@ import { ContactPageData } from '../types';
 import { Layout } from '../components/Layout';
 import SEO from '../components/SEO';
 
+const successMessage = 'Thank you!';
+const failMessage =
+  'Sorry, there was a problem trying to send your enquiry. Please reload the page and try again or you can email me directly at contact@louiseparrstudio.com';
+
 const ContactTemplate: FC<PageProps<ContactPageData>> = ({ data }) => {
   if (!data) return null;
   const { contact_content, dropdown_header, dropdown_options } =
     data.prismicContactPage.data;
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [onSubmitMessage, setOnSubmitMessage] = useState(successMessage);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    setFormSubmitted(true);
+
     try {
       const response = await emailjs.sendForm(
         'contact_service',
@@ -23,10 +30,11 @@ const ContactTemplate: FC<PageProps<ContactPageData>> = ({ data }) => {
         '#contact-form',
         process.env.EMAILJS_USER_ID,
       );
-      if (response.status === 200 && response.text === 'OK') {
-        setFormSubmitted(true);
+      if (response.status !== 200 && response.text !== 'OK') {
+        setOnSubmitMessage(failMessage);
       }
     } catch (error) {
+      setOnSubmitMessage(failMessage);
       if (process.env.NODE_ENV !== 'production') {
         console.log(error);
       }
@@ -97,7 +105,7 @@ const ContactTemplate: FC<PageProps<ContactPageData>> = ({ data }) => {
               </div>
             </form>
           ) : (
-            <span>Thank you!</span>
+            <span>{onSubmitMessage}</span>
           )}
         </div>
       </main>

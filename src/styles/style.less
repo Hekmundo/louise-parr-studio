@@ -3,7 +3,16 @@
 // General
 header,
 footer {
-  background-color: @black;
+  background-color: @grey;
+}
+
+.hidden {
+  display: none;
+}
+
+.layout-container {
+  .flex-column();
+  min-height: 100vh;
 }
 
 .homepage,
@@ -18,8 +27,7 @@ footer {
 }
 
 .center-flex {
-  display: flex;
-  flex-direction: column;
+  .flex-column();
   justify-content: center;
   align-items: center;
 }
@@ -72,7 +80,7 @@ header {
       font-weight: 700;
       color: @white;
       font-size: 1.2em;
-      .transition(all, 0.2s);
+      .transition(all, 0.3s);
     }
 
     a:hover,
@@ -108,6 +116,7 @@ header {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      max-width: 1200px;
     }
 
     li {
@@ -125,11 +134,19 @@ header {
 // Footer
 footer {
   color: @white;
+  margin-top: auto;
+
+  a {
+    display: inline-block;
+    line-height: 0;
+    margin: 10px 10px 30px;
+  }
 
   svg {
     fill: @white;
-    width: 50px;
-    .transition(all, 0.2s);
+    width: 40px;
+    height: 40px;
+    .transition(all, 0.3s);
 
     &:hover {
       fill: @light-pink;
