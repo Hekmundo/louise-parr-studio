@@ -993,6 +993,16 @@ type PrismicContactPageDataDropdownOptions = {
   readonly option: Maybe<Scalars['String']>;
 };
 
+type PrismicColourThemeDataType = {
+  readonly content_background_colour: Maybe<Scalars['String']>;
+  readonly content_text_colour: Maybe<Scalars['String']>;
+  readonly primary_colour: Maybe<Scalars['String']>;
+  readonly primary_text_colour: Maybe<Scalars['String']>;
+  readonly primary_text_hover_colour: Maybe<Scalars['String']>;
+  readonly secondary_colour: Maybe<Scalars['String']>;
+  readonly secondary_text_colour: Maybe<Scalars['String']>;
+};
+
 type PrismicHeaderDataLogoImageType = {
   readonly alt: Maybe<Scalars['String']>;
   readonly copyright: Maybe<Scalars['String']>;
@@ -1052,6 +1062,41 @@ type PrismicContactPageDataType = {
   readonly contact_content: Maybe<PrismicStructuredTextType>;
   readonly dropdown_header: Maybe<Scalars['String']>;
   readonly dropdown_options: Maybe<ReadonlyArray<Maybe<PrismicContactPageDataDropdownOptions>>>;
+};
+
+type PrismicColourTheme = Node & {
+  readonly data: PrismicColourThemeDataType;
+  readonly dataRaw: Scalars['JSON'];
+  readonly prismicId: Scalars['ID'];
+  readonly alternate_languages: ReadonlyArray<PrismicAlternateLanguageType>;
+  readonly first_publication_date: Scalars['Date'];
+  readonly href: Scalars['String'];
+  readonly lang: Scalars['String'];
+  readonly last_publication_date: Scalars['Date'];
+  readonly tags: ReadonlyArray<Scalars['String']>;
+  readonly type: Scalars['String'];
+  readonly url: Maybe<Scalars['String']>;
+  readonly _previewable: Scalars['ID'];
+  readonly id: Scalars['ID'];
+  readonly parent: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+};
+
+
+type PrismicColourTheme_first_publication_dateArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type PrismicColourTheme_last_publication_dateArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
 };
 
 type PrismicAboutPageDataAboutImageImageType = {
@@ -1342,7 +1387,7 @@ type PrismicHeader_last_publication_dateArgs = {
   locale: Maybe<Scalars['String']>;
 };
 
-type PrismicAllDocumentTypes = PrismicHeader | PrismicHomePage | PrismicFooter | PrismicAboutPage | PrismicContactPage;
+type PrismicAllDocumentTypes = PrismicHeader | PrismicHomePage | PrismicAboutPage | PrismicContactPage | PrismicColourTheme | PrismicFooter;
 
 type GatsbyImageFormat =
   | 'NO_CHANGE'
@@ -1384,6 +1429,8 @@ type Query = {
   readonly allPrismicTypePathType: PrismicTypePathTypeConnection;
   readonly prismicFooter: Maybe<PrismicFooter>;
   readonly allPrismicFooter: PrismicFooterConnection;
+  readonly prismicColourTheme: Maybe<PrismicColourTheme>;
+  readonly allPrismicColourTheme: PrismicColourThemeConnection;
   readonly prismicContactPage: Maybe<PrismicContactPage>;
   readonly allPrismicContactPage: PrismicContactPageConnection;
   readonly prismicAboutPage: Maybe<PrismicAboutPage>;
@@ -1661,6 +1708,34 @@ type Query_prismicFooterArgs = {
 type Query_allPrismicFooterArgs = {
   filter: Maybe<PrismicFooterFilterInput>;
   sort: Maybe<PrismicFooterSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type Query_prismicColourThemeArgs = {
+  data: Maybe<PrismicColourThemeDataTypeFilterInput>;
+  dataRaw: Maybe<JSONQueryOperatorInput>;
+  prismicId: Maybe<IDQueryOperatorInput>;
+  alternate_languages: Maybe<PrismicAlternateLanguageTypeFilterListInput>;
+  first_publication_date: Maybe<DateQueryOperatorInput>;
+  href: Maybe<StringQueryOperatorInput>;
+  lang: Maybe<StringQueryOperatorInput>;
+  last_publication_date: Maybe<DateQueryOperatorInput>;
+  tags: Maybe<StringQueryOperatorInput>;
+  type: Maybe<StringQueryOperatorInput>;
+  url: Maybe<StringQueryOperatorInput>;
+  _previewable: Maybe<IDQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
+
+type Query_allPrismicColourThemeArgs = {
+  filter: Maybe<PrismicColourThemeFilterInput>;
+  sort: Maybe<PrismicColourThemeSortInput>;
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
 };
@@ -4035,6 +4110,237 @@ type PrismicFooterSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
+type PrismicColourThemeDataTypeFilterInput = {
+  readonly content_background_colour: Maybe<StringQueryOperatorInput>;
+  readonly content_text_colour: Maybe<StringQueryOperatorInput>;
+  readonly primary_colour: Maybe<StringQueryOperatorInput>;
+  readonly primary_text_colour: Maybe<StringQueryOperatorInput>;
+  readonly primary_text_hover_colour: Maybe<StringQueryOperatorInput>;
+  readonly secondary_colour: Maybe<StringQueryOperatorInput>;
+  readonly secondary_text_colour: Maybe<StringQueryOperatorInput>;
+};
+
+type PrismicColourThemeConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<PrismicColourThemeEdge>;
+  readonly nodes: ReadonlyArray<PrismicColourTheme>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<PrismicColourThemeGroupConnection>;
+};
+
+
+type PrismicColourThemeConnection_distinctArgs = {
+  field: PrismicColourThemeFieldsEnum;
+};
+
+
+type PrismicColourThemeConnection_maxArgs = {
+  field: PrismicColourThemeFieldsEnum;
+};
+
+
+type PrismicColourThemeConnection_minArgs = {
+  field: PrismicColourThemeFieldsEnum;
+};
+
+
+type PrismicColourThemeConnection_sumArgs = {
+  field: PrismicColourThemeFieldsEnum;
+};
+
+
+type PrismicColourThemeConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: PrismicColourThemeFieldsEnum;
+};
+
+type PrismicColourThemeEdge = {
+  readonly next: Maybe<PrismicColourTheme>;
+  readonly node: PrismicColourTheme;
+  readonly previous: Maybe<PrismicColourTheme>;
+};
+
+type PrismicColourThemeFieldsEnum =
+  | 'data.content_background_colour'
+  | 'data.content_text_colour'
+  | 'data.primary_colour'
+  | 'data.primary_text_colour'
+  | 'data.primary_text_hover_colour'
+  | 'data.secondary_colour'
+  | 'data.secondary_text_colour'
+  | 'dataRaw'
+  | 'prismicId'
+  | 'alternate_languages'
+  | 'alternate_languages.id'
+  | 'alternate_languages.uid'
+  | 'alternate_languages.lang'
+  | 'alternate_languages.type'
+  | 'alternate_languages.raw'
+  | 'first_publication_date'
+  | 'href'
+  | 'lang'
+  | 'last_publication_date'
+  | 'tags'
+  | 'type'
+  | 'url'
+  | '_previewable'
+  | 'id'
+  | 'parent.id'
+  | 'parent.parent.id'
+  | 'parent.parent.parent.id'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.children.children'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.children'
+  | 'parent.children.id'
+  | 'parent.children.parent.id'
+  | 'parent.children.parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.children.children'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'children'
+  | 'children.id'
+  | 'children.parent.id'
+  | 'children.parent.parent.id'
+  | 'children.parent.parent.children'
+  | 'children.parent.children'
+  | 'children.parent.children.id'
+  | 'children.parent.children.children'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.children'
+  | 'children.children.id'
+  | 'children.children.parent.id'
+  | 'children.children.parent.children'
+  | 'children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.children.children'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type';
+
+type PrismicColourThemeGroupConnection = {
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<PrismicColourThemeEdge>;
+  readonly nodes: ReadonlyArray<PrismicColourTheme>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<PrismicColourThemeGroupConnection>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+};
+
+
+type PrismicColourThemeGroupConnection_distinctArgs = {
+  field: PrismicColourThemeFieldsEnum;
+};
+
+
+type PrismicColourThemeGroupConnection_maxArgs = {
+  field: PrismicColourThemeFieldsEnum;
+};
+
+
+type PrismicColourThemeGroupConnection_minArgs = {
+  field: PrismicColourThemeFieldsEnum;
+};
+
+
+type PrismicColourThemeGroupConnection_sumArgs = {
+  field: PrismicColourThemeFieldsEnum;
+};
+
+
+type PrismicColourThemeGroupConnection_groupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: PrismicColourThemeFieldsEnum;
+};
+
+type PrismicColourThemeFilterInput = {
+  readonly data: Maybe<PrismicColourThemeDataTypeFilterInput>;
+  readonly dataRaw: Maybe<JSONQueryOperatorInput>;
+  readonly prismicId: Maybe<IDQueryOperatorInput>;
+  readonly alternate_languages: Maybe<PrismicAlternateLanguageTypeFilterListInput>;
+  readonly first_publication_date: Maybe<DateQueryOperatorInput>;
+  readonly href: Maybe<StringQueryOperatorInput>;
+  readonly lang: Maybe<StringQueryOperatorInput>;
+  readonly last_publication_date: Maybe<DateQueryOperatorInput>;
+  readonly tags: Maybe<StringQueryOperatorInput>;
+  readonly type: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly _previewable: Maybe<IDQueryOperatorInput>;
+  readonly id: Maybe<StringQueryOperatorInput>;
+  readonly parent: Maybe<NodeFilterInput>;
+  readonly children: Maybe<NodeFilterListInput>;
+  readonly internal: Maybe<InternalFilterInput>;
+};
+
+type PrismicColourThemeSortInput = {
+  readonly fields: Maybe<ReadonlyArray<Maybe<PrismicColourThemeFieldsEnum>>>;
+  readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
+};
+
 type PrismicContactPageDataTypeFilterInput = {
   readonly contact_content: Maybe<PrismicStructuredTextTypeFilterInput>;
   readonly dropdown_header: Maybe<StringQueryOperatorInput>;
@@ -5282,13 +5588,15 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
+type PrismicColourThemeFragmentFragment = { readonly data: Pick<PrismicColourThemeDataType, 'content_background_colour' | 'content_text_colour' | 'primary_colour' | 'primary_text_colour' | 'primary_text_hover_colour' | 'secondary_colour' | 'secondary_text_colour'> };
+
 type AboutPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type AboutPageQuery = { readonly prismicAboutPage: Maybe<(
     Pick<PrismicAboutPage, '_previewable'>
     & { readonly data: { readonly about_content: Maybe<Pick<PrismicStructuredTextType, 'richText'>>, readonly about_image: Maybe<Pick<PrismicAboutPageDataAboutImageImageType, 'url' | 'alt'>>, readonly instagram_header: Maybe<Pick<PrismicStructuredTextType, 'richText'>>, readonly main_paragraph: Maybe<Pick<PrismicStructuredTextType, 'richText'>> } }
-  )> };
+  )>, readonly prismicColourTheme: Maybe<PrismicColourThemeFragmentFragment> };
 
 type ContactPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -5299,7 +5607,7 @@ type ContactPageQuery = { readonly prismicContactPage: Maybe<(
       Pick<PrismicContactPageDataType, 'dropdown_header'>
       & { readonly contact_content: Maybe<Pick<PrismicStructuredTextType, 'richText'>>, readonly dropdown_options: Maybe<ReadonlyArray<Maybe<Pick<PrismicContactPageDataDropdownOptions, 'option'>>>> }
     ) }
-  )> };
+  )>, readonly prismicColourTheme: Maybe<PrismicColourThemeFragmentFragment> };
 
 type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -5310,12 +5618,12 @@ type HomePageQuery = { readonly prismicHomePage: Maybe<(
       Pick<PrismicHomePageDataType, 'footer_button_text'>
       & { readonly banner: Maybe<Pick<PrismicStructuredTextType, 'text'>>, readonly footer_button_link: Maybe<Pick<PrismicLinkType, 'url' | 'target'>>, readonly footer_content: Maybe<Pick<PrismicStructuredTextType, 'richText'>>, readonly image_collage: Maybe<ReadonlyArray<Maybe<{ readonly image: Maybe<Pick<PrismicHomePageDataImageCollageImageImageType, 'alt' | 'url'>> }>>> }
     ) }
-  )> };
+  )>, readonly prismicColourTheme: Maybe<PrismicColourThemeFragmentFragment> };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+type staticUsersAlexDesktoplouiseParrStudiosrccomponentsHeaderTsx1577254080QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_1_Query = { readonly prismicHeader: Maybe<{ readonly data: (
+type staticUsersAlexDesktoplouiseParrStudiosrccomponentsHeaderTsx1577254080Query = { readonly prismicHeader: Maybe<{ readonly data: (
       Pick<PrismicHeaderDataType, 'store_label'>
       & { readonly logo: Maybe<Pick<PrismicHeaderDataLogoImageType, 'alt' | 'url'>>, readonly page_navigation: Maybe<ReadonlyArray<Maybe<(
         Pick<PrismicHeaderDataPageNavigation, 'page_name'>
@@ -5324,12 +5632,12 @@ type Unnamed_1_Query = { readonly prismicHeader: Maybe<{ readonly data: (
         Pick<PrismicHeaderDataStoreLinks, 'store_name'>
         & { readonly store_link: Maybe<Pick<PrismicLinkType, 'url' | 'target'>> }
       )>>> }
-    ) }> };
+    ) }>, readonly prismicColourTheme: Maybe<PrismicColourThemeFragmentFragment> };
 
-type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_2_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
+type Unnamed_1_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
 
 type GatsbyImgixFluidFragment = Pick<ImgixFluid, 'aspectRatio' | 'src' | 'srcWebp' | 'srcSet' | 'srcSetWebp' | 'sizes' | 'base64'>;
 

@@ -14,19 +14,22 @@ export interface LayoutProps {
 export interface SiteData {
   site: GatsbyTypes.Site;
 }
+export interface ColourThemeData {
+  prismicColourTheme: GatsbyTypes.PrismicColourTheme;
+}
 
-interface HeaderData {
+interface HeaderData extends ColourThemeData {
   prismicHeader: GatsbyTypes.PrismicHeader;
 }
 
-export interface AboutPageData {
+export interface AboutPageData extends ColourThemeData {
   prismicAboutPage: GatsbyTypes.PrismicAboutPage;
 }
 
-export interface ContactPageData {
+export interface ContactPageData extends ColourThemeData {
   prismicContactPage: GatsbyTypes.PrismicContactPage;
 }
 
-export interface HomePageData {
+export interface HomePageData extends ColourThemeData {
   prismicHomePage: GatsbyTypes.PrismicHomePage;
 }

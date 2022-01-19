@@ -16,6 +16,8 @@ const ContactTemplate: FC<PageProps<ContactPageData>> = ({ data }) => {
   const { contact_content, dropdown_header, dropdown_options } =
     data.prismicContactPage.data;
 
+  const { prismicColourTheme } = data;
+
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [onSubmitMessage, setOnSubmitMessage] = useState(successMessage);
 
@@ -126,6 +128,9 @@ export const query = graphql`
           option
         }
       }
+    }
+    prismicColourTheme {
+      ...PrismicColourThemeFragment
     }
   }
 `;
